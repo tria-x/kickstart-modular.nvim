@@ -6,6 +6,18 @@ return {
 
     config = function()
       require('kanagawa').setup {
+
+        -- Windows Terminal picks some other font to support italic,
+        -- so we're explicitly disabling italic.
+        -- https://stackoverflow.com/questions/78137732/how-can-i-fully-disable-italics-with-the-kanagawa-theme-in-neovim
+        commentStyle = { italic = false },
+        keywordStyle = { italic = false },
+        overrides = function()
+          return {
+            ['@variable.builtin'] = { italic = false },
+          }
+        end,
+
         colors = {
           palette = {
             -- Bg Shades, bluish tint removed
@@ -51,4 +63,3 @@ return {
   },
 }
 -- vim: ts=2 sts=2 sw=2 et
-
